@@ -65,3 +65,30 @@ module.exports = {
   countLines,
   analyzeTextFile
 };
+
+// Verification: Test the functions with sample data
+if (require.main === module) {
+  console.log('=== Testing textAnalyzer.js ===\n');
+
+  // Test with quotes.txt
+  console.log('--- Analyzing data/quotes.txt ---');
+  try {
+    const quotesAnalysis = analyzeTextFile('./data/quotes.txt');
+    console.log(`Word Count: ${quotesAnalysis.wordCount}`);
+    console.log(`Longest Word: "${quotesAnalysis.longestWord}"`);
+    console.log(`Line Count: ${quotesAnalysis.lineCount}`);
+  } catch (error) {
+    console.error('Error analyzing quotes.txt:', error.message);
+  }
+
+  console.log('\n--- Analyzing data/sample-text.txt ---');
+  // Test with sample-text.txt
+  try {
+    const sampleAnalysis = analyzeTextFile('./data/sample-text.txt');
+    console.log(`Word Count: ${sampleAnalysis.wordCount}`);
+    console.log(`Longest Word: "${sampleAnalysis.longestWord}"`);
+    console.log(`Line Count: ${sampleAnalysis.lineCount}`);
+  } catch (error) {
+    console.error('Error analyzing sample-text.txt:', error.message);
+  }
+}
